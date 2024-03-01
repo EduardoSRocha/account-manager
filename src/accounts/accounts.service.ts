@@ -40,6 +40,7 @@ export class AccountsService {
   update(id: string, updateAccountsDto: UpdateAccountDto) {
     const existingAccount = this.findOne(id);
     if (existingAccount) {
+      return updateAccountsDto;
       // update the existing entity
     }
   }

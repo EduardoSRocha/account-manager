@@ -7,7 +7,6 @@ import {
   Delete,
   Patch,
   Put,
-  Query,
   HttpException,
   HttpStatus,
 } from '@nestjs/common';
@@ -20,8 +19,7 @@ export class AccountsController {
   constructor(private readonly accountsService: AccountsService) {}
 
   @Get()
-  findAll(@Query() paginationQuery) {
-    const { limit, offset } = paginationQuery;
+  findAll() {
     return this.accountsService.findAll();
   }
 

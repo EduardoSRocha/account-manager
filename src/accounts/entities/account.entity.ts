@@ -1,4 +1,7 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinTable, ManyToMany, OneToMany, OneToOne, PrimaryGeneratedColumn, JoinColumn } from "typeorm";
+import { Company } from "./company.entity";
+import { SubAccount } from "./subaccount.entity";
+// import { Address } from "./address.entity"
 
 @Entity() //sql table === 'account'
 export class Account {
@@ -6,23 +9,35 @@ export class Account {
     id: number;
 
     @Column()
-    account_number: string;
+    accountNumber: string;
 
     @Column()
-    account_holder: string;
-
-    @Column('json', { nullable: true })
-    transactions: string[];
+    accountHolder: string;
 
     @Column()
-    branch_number: string;
+    branchNumber: string;
 
     @Column()
-    baas_provider: string;
+    baasProvider: string;
 
-    @Column()
-    address_id: string;
+    @JoinTable()
+    @ManyToMany(
+        () => Company, 
+        {
+            cascade: true,
+        }
+    ) 
+    companies: Company[];
 
     @Column()
     cellphone: string;
+
+    @OneToMany(() => SubAccount, subAccount => subAccount.account)
+    subAccounts?: SubAccount[];
+
+    // @OneToOne(() => Address, { eager: true })
+    // @JoinColumn()
+    // address?: string | Address;
+
+    
 }

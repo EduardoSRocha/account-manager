@@ -2,15 +2,15 @@ import { Controller, Get, Param, Body, Post, Delete, Patch, Put, Query, HttpExce
 import { AccountsService } from './accounts.service';
 import { CreateAccountDto } from './dto/create-account.dto/create-account.dto';
 import { UpdateAccountDto } from './dto/create-account.dto/update-account.dto';
+import { PaginationQueryDto } from 'src/common/dto/pagination-query.dto/pagination-query.dto';
 
 @Controller('accounts')
 export class AccountsController {
     constructor(private readonly accountsService: AccountsService) {}
 
     @Get()
-    findAll(@Query() paginationQuery){
-        const { limit, offset } = paginationQuery
-        return  this.accountsService.findAll()
+    findAll(@Query() paginationQuery:PaginationQueryDto){
+        return  this.accountsService.findAll(paginationQuery)
     }
 
     @Get(':id')

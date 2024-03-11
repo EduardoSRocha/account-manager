@@ -8,14 +8,14 @@ import { AccountsModule } from './accounts/accounts.module';
   imports: [
     AccountsModule,
     TypeOrmModule.forRoot({
-      type: 'postgres', // type of our database
-      host: 'localhost', // database host
-      port: 5432, // database host
-      username: 'postgres', // username
-      password: 'pass123', // user password
-      database: 'postgres', // name of our database,
-      autoLoadEntities: true, // models will be loaded automatically 
-      synchronize: true, // your entities will be synced with the database(recommended: disable in prod)  
+      type: 'postgres', // tipo do banco de dados
+      host: 'localhost', // host do banco de dados
+      port: 5432, // porta do banco de dados
+      username: 'postgres', // nome de usuário
+      password: 'pass123', // senha do usuário
+      database: 'postgres', // nome do banco de dados
+      autoLoadEntities: true, // modelos serão carregados automaticamente
+      synchronize: true, // suas entidades serão sincronizadas com o banco de dados (recomendado: desativar em produção)
     })
   ],
   controllers: [AppController],

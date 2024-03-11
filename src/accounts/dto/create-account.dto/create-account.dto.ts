@@ -1,24 +1,30 @@
-import { IsArray, IsString } from 'class-validator'
+import { IsString, IsOptional } from 'class-validator'
+// import { Address } from 'src/accounts/entities/address.entity';
 export class CreateAccountDto {
 
     @IsString()
-    readonly account_number: string;
+    readonly accountNumber: string;
 
     @IsString()
-    readonly account_holder: string;
-
-    @IsString({ each: true })
-    readonly transactions: string[];
+    readonly accountHolder: string;
     
     @IsString()
-    readonly branch_number: string;
+    readonly branchNumber: string;
     
     @IsString()
-    readonly baas_provider: string;
+    readonly baasProvider: string;
     
-    @IsString()
-    readonly address_id: string;
+    // @IsOptional()
+    // readonly address?: string | Address;
     
     @IsString()
     readonly cellphone: string;
+
+    @IsString({ each: true })
+    readonly companies: string[];
+
+    @IsOptional()
+    @IsString({ each: true })
+    readonly subAccounts?: string[];
+    
 }

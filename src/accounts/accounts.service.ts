@@ -1,54 +1,49 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Account } from './entities/account.entity';
 import { CreateAccountDto } from './dto/create-account.dto/create-account.dto';
 import { UpdateAccountDto } from './dto/create-account.dto/update-account.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class AccountsService {
-    private accounts: Account[] = [
-        {
-            id: 1,
-            account_number: "987654321",
-            account_holder: "João Silva",
-            transactions: ["Transaction1", "Transaction2", "Transaction3"],
-            branch_number: "1234",
-            baas_provider: "SomeProvider",
-            address_id: "987654",
-            cellphone: "123-456-7890"
-        }
-    ];
+    constructor(
+        @InjectRepository(Account)
+        private readonly accountRepository: Repository<Account>
+    ) {}
 
     findAll() {
-        return this.accounts;
+        return this.accountRepository.find()
     }
 
-    findOne(id: string) {
-        return this.accounts.find(item => item.id === +id);
+    async findOne(id: string) {
+        const account = await this.accountRepository.findOne({ where: {id: +id}})
+        if(!account){
+            throw new NotFoundException(`Account #${id} not found`)
+        }
+        return account
+
     }
 
     create(createAccountData: CreateAccountDto) {
-        const id:number = this.accounts.length + 1
-        const accountCreated: Account = {
-            id,
-            ...createAccountData
-        }
-
-        this.accounts.push(accountCreated)
-        return accountCreated
+        const account = this.accountRepository.create(createAccountData);
+        return this.accountRepository.save(account)
     }
     
-    update(id: string, updateAccountsDto: UpdateAccountDto) {
-        const existingAccount = this.findOne(id);
-        if (existingAccount) {
-            // update the existing entity
+    async update(id: string, updateAccountsDto: UpdateAccountDto) {
+        const account = await this.accountRepository.preload({
+            id: +id,
+            ...updateAccountsDto
+        })
+        if(!account){
+            throw new NotFoundException(`Account #${id} not found`)
         }
+        return this.accountRepository.save(account)
     }
     
-    remove(id: string) {
-        const accountsIndex = this.accounts.findIndex(item => item.id === +id);
-        
-        if (accountsIndex >= 0) {
-            this.accounts.splice(accountsIndex, 1);
-        }
+    async remove(id: string) {
+        // Encontrar a conta pelo ID
+        const account = await this.findOne(id)
+        return this.accountRepository.remove(account)
     }
 }

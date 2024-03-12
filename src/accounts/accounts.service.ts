@@ -1,4 +1,4 @@
-import { Inject, Injectable, NotFoundException } from '@nestjs/common';
+import { Inject, Injectable, NotFoundException, Scope } from '@nestjs/common';
 import { Account } from './entities/account.entity';
 import { CreateAccountDto } from './dto/account/create-account.dto';
 import { UpdateAccountDto } from './dto/account/update-account.dto';
@@ -13,7 +13,7 @@ import { Event } from 'src/events/entities/event.entity';
 import { FinancialTransaction } from './entities/financial-transaction.entity';
 
 /**
- * 
+ * E1 E2 E3 E4
  * Interface Bank define a estrutura de um objeto representando informações de um banco.
  * interface Bank {
  *    ispb: string; // O número ISPB do banco, identificador único no sistema financeiro brasileiro.
@@ -23,7 +23,17 @@ import { FinancialTransaction } from './entities/financial-transaction.entity';
  * }
 */
 
-@Injectable()
+/**
+ *  Escopo Singleton (por padrão): Este é o escopo padrão. Uma única instância do serviço é criada e compartilhada por todo o aplicativo. Isso significa que todas as classes e componentes que injetam esse serviço recebem a mesma instância.
+ *  
+ *  Escopo Transiente: Cada vez que um serviço é injetado, uma nova instância é criada. Isso garante que cada componente que recebe o serviço obtenha sua própria instância exclusiva.
+ *  
+ *  Escopo de Solicitação (Request): Uma nova instância do serviço é criada para cada requisição HTTP recebida pelo servidor. Isso garante que cada solicitação tenha seu próprio contexto isolado de serviços, útil para garantir que os dados de uma solicitação não afetem as outras.
+ *  
+ *  Escopo de Módulo: Este escopo é controlado pelo módulo em que o serviço está sendo fornecido. Cada módulo tem sua própria instância de serviço. Quando um serviço é fornecido em um módulo, ele é compartilhado por todos os componentes desse módulo.
+ */
+
+@Injectable({ scope: Scope.REQUEST })
 export class AccountsService {
     constructor(
         // Injeção de dependência do repositório da entidade Account usando o decorator @InjectRepository.
@@ -51,6 +61,7 @@ export class AccountsService {
 
         // Ao iniciar o serviço, o array ispb_list é injetado e pode ser acessado em todo o serviço.
         // Isso permite que o serviço utilize informações estáticas sobre os bancos, como ISPBs, para operações futuras.
+        console.log('Account instantiated')
     }
 
     findAll(paginationQuery: PaginationQueryDto) {

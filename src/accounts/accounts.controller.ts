@@ -6,7 +6,9 @@ import { PaginationQueryDto } from 'src/common/dto/pagination-query.dto/paginati
 
 @Controller('accounts')
 export class AccountsController {
-    constructor(private readonly accountsService: AccountsService) {}
+    constructor(private readonly accountsService: AccountsService) {
+        console.log('AccountController is created')
+    }
 
     @Get()
     findAll(@Query() paginationQuery:PaginationQueryDto){

@@ -1,7 +1,7 @@
 import { Controller, Get, Param, Body, Post, Delete, Patch, Put, Query, HttpException, HttpStatus, NotFoundException } from '@nestjs/common';
 import { AccountsService } from './accounts.service';
-import { CreateAccountDto } from './dto/create-account.dto/create-account.dto';
-import { UpdateAccountDto } from './dto/create-account.dto/update-account.dto';
+import { CreateAccountDto } from './dto/account/create-account.dto';
+import { UpdateAccountDto } from './dto/account/update-account.dto';
 import { PaginationQueryDto } from 'src/common/dto/pagination-query.dto/pagination-query.dto';
 
 @Controller('accounts')
@@ -15,10 +15,7 @@ export class AccountsController {
 
     @Get(':id')
     findOne(@Param('id') id: string) {
-        const account = this.accountsService.findOne(id)
-        if(!account) throw new HttpException(`Conta #${id} não encontrada`, HttpStatus.NOT_FOUND)
-
-        return account
+        return this.accountsService.findOne(id)
     }
 
     @Post()

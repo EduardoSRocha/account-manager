@@ -11,4 +11,10 @@ export class SubAccount {
     
     @ManyToOne(() => Account, account => account.subAccounts)
     account: Account;
+
+    @Column()
+    isAccountActive?: boolean
+
+    @Column()
+    isAccountBlocked?: boolean
 }

@@ -1,9 +1,10 @@
 import { Column, Entity, JoinTable, ManyToMany, OneToMany, OneToOne, PrimaryGeneratedColumn, JoinColumn } from "typeorm";
 import { Company } from "./company.entity";
 import { SubAccount } from "./subaccount.entity";
-// import { Address } from "./address.entity"
+import { Address } from "./address.entity";
+import { FinancialTransaction } from "./financial-transaction.entity";
 
-@Entity() //sql table === 'account'
+@Entity() 
 export class Account {
     @PrimaryGeneratedColumn()
     id: number;
@@ -12,7 +13,7 @@ export class Account {
     accountNumber: string;
 
     @Column()
-    accountHolder: string;
+    fullname: string;
 
     @Column()
     branchNumber: string;
@@ -35,9 +36,22 @@ export class Account {
     @OneToMany(() => SubAccount, subAccount => subAccount.account)
     subAccounts?: SubAccount[];
 
-    // @OneToOne(() => Address, { eager: true })
-    // @JoinColumn()
-    // address?: string | Address;
+    @OneToMany(() => FinancialTransaction, financialTransaction => financialTransaction.account)
+    financialTransactions: FinancialTransaction[];
 
-    
+    @OneToOne(() => Address, { eager: true, cascade: true, onDelete: 'CASCADE', onUpdate: 'CASCADE' })
+    @JoinColumn()
+    address: Address;
+
+    @Column({ default: 0 })
+    balance: number;
+
+    @Column({ default: 0 })
+    fundsOnHold: number;
+
+    @Column({ default: false })
+    isAccountClosed?: boolean;
+
+    @Column({ default: false })
+    isAccountBlocked?: boolean;
 }

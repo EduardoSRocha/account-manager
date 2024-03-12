@@ -3,6 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AccountsModule } from './accounts/accounts.module';
+import { FinancialTransactionModule } from './financial-transaction/financial-transaction.module';
 
 @Module({
   imports: [
@@ -16,7 +17,8 @@ import { AccountsModule } from './accounts/accounts.module';
       database: 'postgres', // nome do banco de dados
       autoLoadEntities: true, // modelos serão carregados automaticamente
       synchronize: true, // suas entidades serão sincronizadas com o banco de dados (recomendado: desativar em produção)
-    })
+    }),
+    FinancialTransactionModule
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { Account } from './entities/account.entity';
 import { CreateAccountDto } from './dto/account/create-account.dto';
 import { UpdateAccountDto } from './dto/account/update-account.dto';
@@ -12,10 +12,22 @@ import { CreateAddressDto } from './dto/address/create-address.dto';
 import { Event } from 'src/events/entities/event.entity';
 import { FinancialTransaction } from './entities/financial-transaction.entity';
 
+/**
+ * 
+ * Interface Bank define a estrutura de um objeto representando informações de um banco.
+ * interface Bank {
+ *    ispb: string; // O número ISPB do banco, identificador único no sistema financeiro brasileiro.
+ *    name: string; // O nome abreviado ou sigla do banco.
+ *    code: number; // O código do banco, geralmente um número único atribuído pelo Banco Central do Brasil.
+ *    fullName: string; // O nome completo do banco.
+ * }
+*/
 
 @Injectable()
 export class AccountsService {
     constructor(
+        // Injeção de dependência do repositório da entidade Account usando o decorator @InjectRepository.
+        // Isso permite que o serviço acesse métodos para interagir com a tabela "Account" no banco de dados.
         @InjectRepository(Account)
         private readonly accountRepository: Repository<Account>,
 
@@ -29,7 +41,17 @@ export class AccountsService {
         private readonly subAccountRepository: Repository<SubAccount>,
 
         private readonly dataSource: DataSource,
-    ) {}
+
+        // @Inject('ISPB_LIST') ispb_list: Bank[], //Injeção de dependência do array ISPB_LIST
+    ) {
+        // O array ispb_list é uma lista de objetos do tipo Bank,
+        // cada um representando um banco com informações como ISPB, nome, código e nome completo.
+        
+        // console.log(ispb_list) // Exemplo de injeção de dependência utilizando constantes
+
+        // Ao iniciar o serviço, o array ispb_list é injetado e pode ser acessado em todo o serviço.
+        // Isso permite que o serviço utilize informações estáticas sobre os bancos, como ISPBs, para operações futuras.
+    }
 
     findAll(paginationQuery: PaginationQueryDto) {
         const { limit, offset} = paginationQuery

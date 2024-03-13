@@ -21,5 +21,9 @@ describe('AppController (e2e)', () => {
       .set('Authorization', process.env.API_KEY) // 👈 
       .expect(200)
       .expect({server: 'on'});
-  }); 
+  });
+
+  afterAll(async () => {
+    await app.close()
+  })
 });

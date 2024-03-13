@@ -5,6 +5,7 @@ import { AppService } from './app.service';
 import { AccountsModule } from './accounts/accounts.module';
 import { FinancialTransactionModule } from './financial-transaction/financial-transaction.module';
 import { ConfigModule } from '@nestjs/config';
+import { CommonModule } from './common/common.module';
 import * as Joi from '@hapi/joi';
 import appConfig from './config/app.config';
 
@@ -85,6 +86,7 @@ import appConfig from './config/app.config';
     }),
     AccountsModule,
     FinancialTransactionModule,
+    CommonModule,
   ],
   controllers: [AppController],
   providers: [AppService],

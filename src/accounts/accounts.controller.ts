@@ -7,7 +7,7 @@ import {
   Delete,
   Patch,
   Put,
-  Query,
+  Query
 } from '@nestjs/common';
 import { AccountsService } from './accounts.service';
 import { CreateAccountDto } from './dto/account/create-account.dto';

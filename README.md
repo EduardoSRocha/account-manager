@@ -1,143 +1,134 @@
-# Documentação da API Baas
+# Baas API Documentation
 
-## Introdução
+## Introduction
 
-Bem-vindo à documentação da API Baas. Baas é uma aplicação de backend como serviço (Backend as a Service) que oferece recursos para gerenciar contas, transações financeiras e informações de endereço. Esta API permite que os usuários realizem operações CRUD (Create, Read, Update, Delete) em contas e endereços, bem como a realização de consultas sobre transações financeiras.
+This repository provides a practical example of how to implement a backend service using Nest.js in conjunction with PostgreSQL. This project was developed to demonstrate best architecture and development practices.
 
-## Instruções de Instalação
+## Installation Instructions
 
-Para instalar e configurar a API Baas em seu ambiente local, siga estas etapas:
+To install and configure the Baas API in your on-premises environment, follow these steps:
 
-1. Certifique-se de ter o Node.js instalado em sua máquina. Você pode baixá-lo em [nodejs.org](https://nodejs.org/).
+1. Make sure you have Node.js installed on your machine. You can download it from [nodejs.org](https://nodejs.org/).
 
-2. Clone o repositório da API Baas:
+2. Clone the Baas API repository:
 
 ```sh
 git clone https://seurepositorio.com/api-baas.git
 
 ```
 
-3. Navegue até o diretório do projeto:
+3. Navigate to the project directory:
 
-4. Instale as dependências do projeto:
+4. Install project dependencies:
 
-5. Após a instalação das dependências, você estará pronto para iniciar a API Baas localmente.
-- Iniciar o Projeto em Modo de Produção:
+5. After installing the dependencies, you are ready to launch the Baas API locally.
+- Start the Project in Production Mode:
 ```sh
 npm start
 ```
 
-Este comando inicia a aplicação em modo de produção.
+This command starts the application in production mode.
 
-- Iniciar o Projeto em Modo de Desenvolvimento com Observação de Alterações:
+- Start the Project in Development Mode with Change Observation:
 
 ```sh
 npm run start:dev
 ```
 
-Este comando inicia a aplicação em modo de desenvolvimento com observação de alterações no código. Qualquer alteração no código resultará em uma reinicialização automática do servidor.
+This command starts the application in development mode with observation of code changes. Any changes to the code will result in an automatic server restart.
 
-- Iniciar o Projeto em Modo de Depuração com Observação de Alterações:
+- Start the Project in Debug Mode with Change Observation:
 
 ```sh
 npm run start:debug
 ```
 
-Este comando inicia a aplicação em modo de depuração com observação de alterações no código. Ele permite que você depure seu código enquanto observa alterações no mesmo.
+This command starts the application in debug mode with observation of changes in the code. It allows you to debug your code while observing changes to it.
 
-- Iniciar o Projeto em Modo de Produção a partir dos Arquivos Compilados:
+- Start the Project in Production Mode from the Compiled Files:
 
 ```sh
 npm run start:prod
 ```
 
-Este comando inicia a aplicação em modo de produção a partir dos arquivos compilados. É útil quando você deseja executar a aplicação em um ambiente de produção sem a necessidade de recompilar o código.
+This command starts the application in production mode from the compiled files. It is useful when you want to run the application in a production environment without having to recompile the code.
 
-- Executar Testes:
+- Run Tests:
 
 ```sh
 npm test
 ```
 
-Este comando executa os testes usando o Jest. Ele procurará por arquivos de teste nos diretórios test e __tests__ e os executará.
+This command runs the tests using Jest. It will look for test files in the test and __tests__ directories and run them.
 
-- Executar Testes em Modo de Observação:
+- Run Tests in Observation Mode:
 
 ```sh
 npm run test:watch
 ```
 
-Este comando executa os testes em modo de observação. Ele continuará observando por alterações nos arquivos de teste e no código fonte, reexecutando os testes sempre que uma mudança for detectada.
+This command runs the tests in observation mode. It will continue to watch for changes to the test files and source code, rerunning the tests whenever a change is detected.
 
-- Executar Testes com Relatório de Cobertura:
+- Run Tests with Coverage Report:
 
 ```sh
 npm run test:cov
 ```
 
-Este comando executa os testes com relatório de cobertura usando o Jest. Ele fornecerá informações detalhadas sobre a cobertura de código durante a execução dos testes.
+This command runs the tests with coverage report using Jest. It will provide detailed information about code coverage while running tests.
 
-- Executar Linting no Código TypeScript:
+- Perform Linting on TypeScript Code:
 
 ```sh
 npm run lint
 ```
 
-Este comando executa a verificação de linting no código TypeScript usando o ESLint. Ele tentará corrigir automaticamente os problemas de lint encontrados.
+This command performs linting checking on TypeScript code using ESLint. It will attempt to automatically fix any lint issues found.
 
 ## Scripts
 
-A API Baas inclui os seguintes scripts npm para facilitar o desenvolvimento e o teste:
+The Baas API includes the following npm scripts to facilitate development and testing:
 
 
-## Descrição
+## Description
 
-A API Baas oferece endpoints para manipulação de contas, endereços e transações financeiras. Abaixo está a descrição dos principais recursos oferecidos pela API:
+The Baas API provides endpoints for handling accounts, addresses and financial transactions. Below is the description of the main features offered by the API:
 
-### Contas (Accounts)
+### Accounts
 
-Os endpoints relacionados a contas permitem aos usuários:
+Account-related endpoints allow users to:
 
-- Listar todas as contas
-- Criar uma nova conta
-- Obter os detalhes de uma conta específica
-- Atualizar uma conta existente
-- Remover uma conta existente
+- List all accounts
+- Create a new account
+- Get the details of a specific account
+- Update an existing account
+- Remove an existing account
 
-### Endereços (Address)
+### Addresses
 
-Os endpoints relacionados a endereços permitem aos usuários:
+Address-related endpoints allow users to:
 
-- Criar um novo endereço
-- Obter os detalhes de um endereço específico
+- Create a new address
+- Get the details of a specific address
 
-### Transações Financeiras (Financial Transactions)
+### Financial Transactions
 
-Os endpoints relacionados a transações financeiras permitem aos usuários:
+Endpoints related to financial transactions allow users to:
 
-- Obter uma lista de transações financeiras de uma conta específica
+- Get a list of financial transactions for a specific account
 
-## Recursos
+## Resources
 
-A API Baas oferece os seguintes recursos:
+The Baas API offers the following features:
 
-- **Company**: Representa uma empresa associada a uma conta.
-- **Address**: Representa um endereço.
-- **Account**: Representa uma conta.
-- **SubAccount**: Representa uma conta subsidiária.
-- **FinancialTransaction**: Representa uma transação financeira.
+- **Company**: Represents a company associated with an account.
+- **Address**: Represents an address.
+- **Account**: Represents an account.
+- **SubAccount**: Represents a subsidiary account.
+- **FinancialTransaction**: Represents a financial transaction.
 
-## Documentação Detalhada
+## Detailed Documentation
 
-Para obter informações detalhadas sobre os endpoints, parâmetros, códigos de resposta e modelos de dados, consulte a documentação OpenAPI fornecida abaixo.
+For detailed information about the endpoints, parameters, response codes, and data models, see the OpenAPI documentation provided below.
 
-[Documentação OpenAPI](swagger.json)
-
-## Informações de Contato
-
-Se você tiver alguma dúvida ou precisar de suporte adicional, entre em contato conosco através dos seguintes meios:
-
-- Email: [seuemail@exemplo.com](mailto:seuemail@exemplo.com)
-- Telefone: +XX XXX XXX XXX
-
-Estamos felizes em ajudar!
+[OpenAPI Documentation](swagger.json)

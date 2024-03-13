@@ -11,22 +11,30 @@ import { SubAccount } from './entities/subaccount.entity';
 import { Address } from './entities/address.entity';
 import { Event } from '../events/entities/event.entity';
 import { FinancialTransaction } from './entities/financial-transaction.entity';
+import { ConfigModule } from '@nestjs/config';
 
 /**
+ * ***************** section_3 ***************** 
+ * 
+ * // import { IDPB_LIST } from './account.constants';
+ * 
+ * // interface Bank {
+ * //     ispb: string; // O número ISPB do banco, identificador único no sistema financeiro brasileiro.
+ * //     name: string; // O nome abreviado ou sigla do banco.
+ * //     code: number; // O código do banco, geralmente um número único atribuído pelo Banco Central do Brasil.
+ * //     fullName: string; // O nome completo do banco.
+ * // }
+ * 
  * E1.
  *
  * import { IDPB_LIST } from './account.constants';
- */
-
-/**
+ * 
  *  E2.
  *
  *  class ConfigService {}
  *  class DevelopmentConfigService {}
  *  class ProductionConfigService {}
- */
-
-/**
+ * 
  * E3.
  *
  * import { IDPB_LIST } from './account.constants';
@@ -42,17 +50,14 @@ import { FinancialTransaction } from './entities/financial-transaction.entity';
  *         }
  *     }
  * }
+ * 
+ * 
+ * ***************** section_4 ***************** 
+ * 
+ * Config service provê
  *
  */
 
-// import { IDPB_LIST } from './account.constants';
-
-// interface Bank {
-//     ispb: string; // O número ISPB do banco, identificador único no sistema financeiro brasileiro.
-//     name: string; // O nome abreviado ou sigla do banco.
-//     code: number; // O código do banco, geralmente um número único atribuído pelo Banco Central do Brasil.
-//     fullName: string; // O nome completo do banco.
-// }
 
 @Module({
   imports: [
@@ -64,6 +69,7 @@ import { FinancialTransaction } from './entities/financial-transaction.entity';
       Event,
       FinancialTransaction,
     ]),
+    ConfigModule
   ],
   controllers: [AccountsController],
   providers: [

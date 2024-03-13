@@ -14,7 +14,7 @@ import appConfig from './config/app.config';
  * O serviço ConfigModule do NestJS fornece uma maneira conveniente de carregar e acessar configurações de ambiente em uma aplicação. Ele permite que você defina variáveis de ambiente em um arquivo .env e as acesse facilmente em todo o seu aplicativo.
  *
  * Além disso, o ConfigModule suporta a validação e a tipagem das configurações, tornando mais fácil garantir que suas configurações sejam definidas corretamente e que tenham os tipos esperados.
- * 
+ *
  * E1.
  *
  * Configure o .env
@@ -26,13 +26,13 @@ import appConfig from './config/app.config';
  * E2.
  *
  * Validação de schema
- * 
+ *
  * npm install @hapi/joi
  * npm install --save-dev @types/hapi__joi
- * 
+ *
  * Para validar que uma variável de ambiente foi configurada use a Joi.required() dentro do Joi.object({}), Tudo que não for configurado ali será opicional.
  * Você pode passar um valor default entre outros (consultar doc da lib)
- * 
+ *
  * Essa Validação é importante principalmente para configurações mais complexas.
  *
  */
@@ -42,9 +42,9 @@ import appConfig from './config/app.config';
     /**
      *  ***************** section_4 *****************
      * Antes de refatorar o forRoot do typeOrmModule para a versão Async
-     * 
+     *
      * o typeoOrmModule por usar o process.env deve ser configurado após o ConfigModule
-     * 
+     *
      * ConfigModule.forRoot({
      *   load: [appConfig],
      *   validationSchema: Joi.object({
@@ -52,7 +52,7 @@ import appConfig from './config/app.config';
      *     DATABASE_PORT: Joi.number().default(5432),
      *   })
      * }),
-     * 
+     *
      * TypeOrmModule.forRoot({
      *   type: 'postgres', // tipo do banco de dados
      *   host: process.env.DATABASE_HOST,
@@ -63,7 +63,7 @@ import appConfig from './config/app.config';
      *   autoLoadEntities: true, // modelos serão carregados automaticamente
      *   synchronize: true, // suas entidades serão sincronizadas com o banco de dados (recomendado: desativar em produção)
      * }),
-     * 
+     *
      * */
     TypeOrmModule.forRootAsync({
       useFactory: () => ({
@@ -75,14 +75,14 @@ import appConfig from './config/app.config';
         database: process.env.DATABASE_NAME,
         autoLoadEntities: true,
         synchronize: true,
-      })
+      }),
     }),
     ConfigModule.forRoot({
       load: [appConfig],
       validationSchema: Joi.object({
         DATABASE_HOST: Joi.required(),
         DATABASE_PORT: Joi.number().default(5432),
-      })
+      }),
     }),
     AccountsModule,
     FinancialTransactionModule,

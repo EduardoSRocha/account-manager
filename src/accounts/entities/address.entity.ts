@@ -9,6 +9,15 @@ export class Address {
   street: string;
 
   @Column()
+  number: string;
+
+  @Column()
+  district: string;
+
+  @Column()
+  complement?: string | null;
+
+  @Column()
   city: string;
 
   @Column()

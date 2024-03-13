@@ -14,27 +14,27 @@ import { FinancialTransaction } from './entities/financial-transaction.entity';
 import { ConfigModule } from '@nestjs/config';
 
 /**
- * ***************** section_3 ***************** 
- * 
+ * ***************** section_3 *****************
+ *
  * // import { IDPB_LIST } from './account.constants';
- * 
+ *
  * // interface Bank {
  * //     ispb: string; // O número ISPB do banco, identificador único no sistema financeiro brasileiro.
  * //     name: string; // O nome abreviado ou sigla do banco.
  * //     code: number; // O código do banco, geralmente um número único atribuído pelo Banco Central do Brasil.
  * //     fullName: string; // O nome completo do banco.
  * // }
- * 
+ *
  * E1.
  *
  * import { IDPB_LIST } from './account.constants';
- * 
+ *
  *  E2.
  *
  *  class ConfigService {}
  *  class DevelopmentConfigService {}
  *  class ProductionConfigService {}
- * 
+ *
  * E3.
  *
  * import { IDPB_LIST } from './account.constants';
@@ -50,14 +50,13 @@ import { ConfigModule } from '@nestjs/config';
  *         }
  *     }
  * }
- * 
- * 
- * ***************** section_4 ***************** 
- * 
+ *
+ *
+ * ***************** section_4 *****************
+ *
  * Config service provê
  *
  */
-
 
 @Module({
   imports: [
@@ -69,7 +68,7 @@ import { ConfigModule } from '@nestjs/config';
       Event,
       FinancialTransaction,
     ]),
-    ConfigModule
+    ConfigModule,
   ],
   controllers: [AccountsController],
   providers: [

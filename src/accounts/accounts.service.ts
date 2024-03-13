@@ -16,11 +16,11 @@ import { PaginationQueryDto } from 'src/common/dto/pagination-query.dto/paginati
 import { CreateAddressDto } from './dto/address/create-address.dto';
 import { Event } from 'src/events/entities/event.entity';
 import { FinancialTransaction } from './entities/financial-transaction.entity';
-import { ConfigService } from '@nestjs/config';
+// import { ConfigService } from '@nestjs/config';
 
 /**
- * ***************** section_3 ***************** 
- * 
+ * ***************** section_3 *****************
+ *
  * E1 E2 E3 E4
  * Interface Bank define a estrutura de um objeto representando informações de um banco.
  * interface Bank {
@@ -32,8 +32,8 @@ import { ConfigService } from '@nestjs/config';
  */
 
 /**
- * ***************** section_3 ***************** 
- * 
+ * ***************** section_3 *****************
+ *
  *  Escopo Singleton (por padrão): Este é o escopo padrão. Uma única instância do serviço é criada e compartilhada por todo o aplicativo. Isso significa que todas as classes e componentes que injetam esse serviço recebem a mesma instância.
  *
  *  Escopo Transiente: Cada vez que um serviço é injetado, uma nova instância é criada. Isso garante que cada componente que recebe o serviço obtenha sua própria instância exclusiva.
@@ -47,13 +47,13 @@ import { ConfigService } from '@nestjs/config';
 export class AccountsService {
   constructor(
     /**
-     * ***************** section_2 ***************** 
-     * 
+     * ***************** section_2 *****************
+     *
      * Injeção de dependência do repositório da entidade Account usando o decorator @InjectRepository.
      * Isso permite que o serviço acesse métodos para interagir com a tabela "Account" no banco de dados.
-     * 
+     *
      */
-   
+
     @InjectRepository(Account)
     private readonly accountRepository: Repository<Account>,
 
@@ -69,44 +69,44 @@ export class AccountsService {
     private readonly dataSource: DataSource,
 
     /**
-     * ***************** section_3 ***************** 
-     * 
+     * ***************** section_3 *****************
+     *
      * @Inject('ISPB_LIST') ispb_list: Bank[], //Injeção de dependência do array ISPB_LIST
-     * 
-     * ***************** section_4 ***************** 
-     * 
+     *
+     * ***************** section_4 *****************
+     *
      * private readonly configService: ConfigService,
-     */ 
+     */
   ) {
     /**
-     * ***************** section_3 ***************** 
+     * ***************** section_3 *****************
      * O array ispb_list é uma lista de objetos do tipo Bank,
      * cada um representando um banco com informações como ISPB, nome, código e nome completo.
      * Ao iniciar o serviço, o array ispb_list é injetado e pode ser acessado em todo o serviço.
      * Isso permite que o serviço utilize informações estáticas sobre os bancos, como ISPBs, para operações futuras.
-     * 
+     *
      * console.log(ispb_list) // VISUALIZAÇÃO no terminal dos valores ao injetar uma dependencia.
      *
      * E5
-     * 
+     *
      * ESCOPO
      * testando iniciação da instância: console.log('Account instantiated');
-     * 
-     * ***************** section_4 ***************** 
+     *
+     * ***************** section_4 *****************
      * ANTES DO app.config
      * Por conta da configuração Scope.REQUEST você deve fazer uma request para ver a impressão no console
-     * 
+     *
      * const databaseHost = this.configService.get<string>('DATABASE_HOST');
      * console.log(databaseHost);
-     * 
+     *
      * obs.
      * Ao passar um segundo argumento "const databaseHost = this.configService.get<string>('DATABASE_HOST', 'localhost');"
      * o segundo argumento vira o valor default
-     * 
+     *
      * DEPOIS do app.config
-     * 
+     *
      * const databaseHost = this.configService.get('database.host', 'localhost');
-     * 
+     *
      */
   }
 

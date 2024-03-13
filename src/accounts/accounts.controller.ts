@@ -12,7 +12,7 @@ import {
 import { AccountsService } from './accounts.service';
 import { CreateAccountDto } from './dto/account/create-account.dto';
 import { UpdateAccountDto } from './dto/account/update-account.dto';
-import { PaginationQueryDto } from 'src/common/dto/pagination-query.dto/pagination-query.dto';
+import { PaginationQueryDto } from '../common/dto/pagination-query.dto/pagination-query.dto';
 import { ApiResponse, ApiTags} from '@nestjs/swagger';
 
 @ApiTags('accounts')

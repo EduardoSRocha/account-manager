@@ -10,6 +10,12 @@ import { Company } from './entities/company.entity';
 import { Event } from '../events/entities/event.entity';
 import { NotFoundException } from '@nestjs/common';
 
+/**
+ * Para rodar um arquivo específico de teste
+ * 
+ * npm run test:watch -- src/accounts/accounts.service.spec.ts
+ */
+
 type MockRepository<T = any> = Partial<Record<keyof Repository<T>, jest.Mock>>;
 const createMockRepository = <T = any>(): MockRepository<T> => ({
   findOne: jest.fn(),

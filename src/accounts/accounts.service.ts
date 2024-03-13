@@ -14,7 +14,7 @@ import { Address } from './entities/address.entity';
 import { SubAccount } from './entities/subaccount.entity';
 import { PaginationQueryDto } from 'src/common/dto/pagination-query.dto/pagination-query.dto';
 import { CreateAddressDto } from './dto/address/create-address.dto';
-import { Event } from 'src/events/entities/event.entity';
+import { Event } from '../events/entities/event.entity';
 import { FinancialTransaction } from './entities/financial-transaction.entity';
 // import { ConfigService } from '@nestjs/config';
 

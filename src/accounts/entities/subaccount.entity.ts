@@ -1,20 +1,20 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import { Account } from "./account.entity";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Account } from './account.entity';
 
 @Entity()
 export class SubAccount {
-    @PrimaryGeneratedColumn()
-    id: number;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @Column()
-    accountNumber: string;
-    
-    @ManyToOne(() => Account, account => account.subAccounts)
-    account: Account;
+  @Column()
+  accountNumber: string;
 
-    @Column()
-    isAccountActive?: boolean
+  @ManyToOne(() => Account, (account) => account.subAccounts)
+  account: Account;
 
-    @Column()
-    isAccountBlocked?: boolean
+  @Column()
+  isAccountActive?: boolean;
+
+  @Column()
+  isAccountBlocked?: boolean;
 }

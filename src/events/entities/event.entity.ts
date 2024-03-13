@@ -1,6 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
- @Entity()
+@Entity()
 export class Event {
   @PrimaryGeneratedColumn()
   id: number;

@@ -4,6 +4,6 @@ import { AccountsModule } from 'src/accounts/accounts.module';
 
 @Module({
   imports: [AccountsModule],
-  providers: [FinancialTransactionService]
+  providers: [FinancialTransactionService],
 })
 export class FinancialTransactionModule {}

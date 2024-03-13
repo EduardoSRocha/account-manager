@@ -3,5 +3,5 @@ import { AccountsService } from 'src/accounts/accounts.service';
 
 @Injectable()
 export class FinancialTransactionService {
-    constructor(private readonly accountService: AccountsService) {}
+  constructor(private readonly accountService: AccountsService) {}
 }

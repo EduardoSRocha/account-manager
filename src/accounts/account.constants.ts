@@ -1,1 +1,1 @@
-export const IDPB_LIST = 'ISPB_LIST'
+export const IDPB_LIST = 'ISPB_LIST';

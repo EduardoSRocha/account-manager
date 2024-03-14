@@ -12,7 +12,7 @@ type MockRepository<T = any> = Partial<Record<keyof Repository<T>, jest.Mock>>;
 const createMockRepository = <T = any>(): MockRepository<T> => ({
   findOne: jest.fn(),
   create: jest.fn(),
-})
+});
 
 describe('FinancialTransactionService', () => {
   let service: FinancialTransactionService;
@@ -23,10 +23,22 @@ describe('FinancialTransactionService', () => {
         FinancialTransactionService,
         AccountsService,
         { provide: DataSource, useValue: {} },
-        { provide: getRepositoryToken(Account), useValue: createMockRepository()},
-        { provide: getRepositoryToken(Address), useValue: createMockRepository()},
-        { provide: getRepositoryToken(SubAccount), useValue: createMockRepository()},
-        { provide: getRepositoryToken(Company), useValue: createMockRepository()}
+        {
+          provide: getRepositoryToken(Account),
+          useValue: createMockRepository(),
+        },
+        {
+          provide: getRepositoryToken(Address),
+          useValue: createMockRepository(),
+        },
+        {
+          provide: getRepositoryToken(SubAccount),
+          useValue: createMockRepository(),
+        },
+        {
+          provide: getRepositoryToken(Company),
+          useValue: createMockRepository(),
+        },
       ],
     }).compile();
 
@@ -39,4 +51,3 @@ describe('FinancialTransactionService', () => {
     expect(service).toBeDefined();
   });
 });
-

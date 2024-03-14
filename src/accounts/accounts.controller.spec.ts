@@ -6,7 +6,6 @@ import { getRepositoryToken } from '@nestjs/typeorm';
 import { Account } from './entities/account.entity';
 import { Address } from './entities/address.entity';
 import { SubAccount } from './entities/subaccount.entity';
-import { FinancialTransaction } from './entities/financial-transaction.entity';
 import { Company } from './entities/company.entity';
 
 
@@ -27,9 +26,7 @@ describe('AccountsController', () => {
         { provide: getRepositoryToken(Account), useValue: createMockRepository() },
         { provide: getRepositoryToken(Address), useValue: createMockRepository()},
         { provide: getRepositoryToken(SubAccount), useValue: createMockRepository()},
-        { provide: getRepositoryToken(FinancialTransaction), useValue: createMockRepository()},
-        { provide: getRepositoryToken(Company), useValue: createMockRepository()},
-        { provide: getRepositoryToken(Event), useValue: createMockRepository()},
+        { provide: getRepositoryToken(Company), useValue: createMockRepository()}
       ],
       controllers: [
         AccountsController,

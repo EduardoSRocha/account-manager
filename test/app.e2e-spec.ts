@@ -6,7 +6,8 @@ import { AppModule } from './../src/app.module';
 describe('AppController (e2e)', () => {
   let app: INestApplication;
 
-  beforeEach(async () => {
+  //Criar a aplicação apenas uma vez antes de iniciar os testes e2e
+  beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
     }).compile();
@@ -23,6 +24,7 @@ describe('AppController (e2e)', () => {
       .expect({ server: 'on' });
   });
 
+  //Finalizar completamente a aplicação após terminar os testes
   afterAll(async () => {
     await app.close();
   });

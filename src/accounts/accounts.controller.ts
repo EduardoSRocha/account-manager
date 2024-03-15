@@ -19,7 +19,7 @@ import { ApiResponse, ApiTags } from '@nestjs/swagger';
 @Controller('accounts')
 export class AccountsController {
   constructor(private readonly accountsService: AccountsService) {
-    // console.log('AccountController is created');
+    // console.log('AccountController is created'); // instance test
   }
 
   /**

@@ -5,6 +5,9 @@ import { Request } from 'express';
 import { IS_PUBLIC_KEY } from 'src/common/decorators/public.decorator';
 import { Reflector } from '@nestjs/core';
 
+/**
+ * Os guards atuam como filtros antes que uma rota seja manipulada. Eles podem permitir ou negar o acesso a uma rota com base em lógica específica definida por você. Essa lógica pode incluir verificações de autenticação, autorização, estado da sessão do usuário, entre outros.
+ */
 @Injectable()
 export class ApiKeyGuard implements CanActivate {
   constructor(

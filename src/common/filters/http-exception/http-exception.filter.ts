@@ -7,11 +7,15 @@ import {
 import { Response } from 'express';
 
 /**
- * // Generate Filter with Nest CLI
+ * Generate Filter with Nest CLI
+ * 
  * nest g filter common/filters/http-exception
- *
- * //aqui quando pegamos o HttpExcetion vamos adi
- *
+ * 
+ * Em NestJS, os "exception filters" são filtros que permitem capturar e lidar com exceções lançadas
+ * durante o processamento de uma solicitação HTTP em uma aplicação NestJS. Esses filtros são usados 
+ * para interceptar exceções específicas e fornecer uma resposta personalizada ao cliente, em vez de 
+ * deixar que a aplicação trave ou retorne uma resposta genérica de erro.
+ * 
  */
 
 @Catch(HttpException)

@@ -1,10 +1,80 @@
-# Documentação da API Baas
+<style>
+    .title {
+        text-decoration:none; 
+        border: none;
+        padding: 0;
+        margin: 0;
+        margin-top: 5px;
+    }
+    
+    .subtitle {
+        text-decoration:none; 
+        border: none;
+        padding: 0;
+        margin: 0;
+        margin-top: 5px;
+    }
+    
+    .nota-rodape {
+        text-align: "justify";
+        text-transform: "bold";
+        font-size: 11px;
+        font-weight: "italic";
+    }
+    
+    h2 {
+        border: none;
+    }
+</style>
 
-## Introdução
+<h1 class="title">Documentação da API Baas</h1>
+<h2 class="subtitle"><i>API Portifólio - NestJs + Postgresql</i></h2>
 
-Este repositório oferece um exemplo prático de como implementar um serviço de backend utilizando Nest.js em conjunto com PostgreSQL. Este projeto foi desenvolvido para demonstrar as melhores práticas de arquitetura e desenvolvimento.
+![TypeScript](https://img.shields.io/badge/-TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white) ![NestJS](https://img.shields.io/badge/-NestJS-E0234E?style=flat-square&logo=nestjs&logoColor=white) ![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-336791?style=flat-square&logo=postgresql&logoColor=white)
 
-## Instruções de Instalação
+<h2>Sumário</h2>
+<ul>
+    <li><a href="#principal_introduction">Introdução</a></li>
+    <li><a href="#nestjs_introduction">Introdução ao NestJs</a></li>
+    <li><a href="#instalation">Instruções de Instalação</a></li>
+    <li><a href="#scripts">Scripts</a></li>
+    <li><a href="#app_description">Descrição da aplicação</a></li>
+     
+
+</ul>
+
+<div>
+
+<h2 id="principal_introduction">Introdução</h2>
+<p>Este repositório oferece um exemplo prático de como implementar um serviço de backend utilizando Nest.js em conjunto com PostgreSQL e possui diversos arquivos README.md com explicações adicionais para proporcionar dicas e entendimento ao desenvolvedor que deseja aprender Nest.js. O compromisso desse repositório é buscar demonstrar as melhores práticas de arquitetura e desenvolvimento com um projeto "real"</p>
+
+<p>Esse repositório faz parte de uma série de vídeos explicativos que tem a intenção de mostrar a um programador iniciante frontend uma aplicação do mundo real</p>
+
+<p>em breve link com os vídeos...</p>
+</div>
+
+<div>
+<h2 a="nestjs_introduction">Introdução ao NestJS</h2>
+
+<p>
+Nest (NestJS) é um framework para construção de aplicações eficientes e escaláveis no lado do servidor utilizando Node.js. Ele utiliza JavaScript progressivo, é construído com e totalmente compatível com TypeScript (ainda permitindo que desenvolvedores codifiquem em JavaScrip puro) e combina elementos de POO 1(Programação Orientada a Objetos), PF 2(Programação Funcional) e PFR 3(Programação Funcional Reativa).
+</p>
+
+<p class="nota-rodape">1. OOP (Programação Orientada a Objetos): Imagine que você está construindo uma casa com Lego. Cada
+peça de Lego é como um objeto que tem suas próprias características (como cor e formato) e funções específicas (como se encaixar com outras peças). Na OOP, você organiza seu código pensando em objetos, que são como pequenos "pacotes" que contêm tanto dados quanto ações relacionadas a esses dados. Por exemplo, você pode ter um objeto "Carro" com características como cor e velocidade, e ações como "acelerar" e "frear" </p>
+
+<p class="nota-rodape">2. FP (Programação Funcional): Agora, pense em matemática. Na matemática, você trabalha com funções que aceitam entradas, realizam algum tipo de operação nelas e produzem uma saída. A programação funcional é semelhante. Você trata suas operações como funções puras, que não alteram dados externos e sempre retornam o mesmo resultado para as mesmas entradas. É como uma receita de bolo: você mistura ingredientes (entradas), os processa de acordo com a receita (função) e obtém um bolo (saída), sempre com o mesmo resultado se seguir os passos corretamente. </p>
+
+<p class="nota-rodape">3. FRP (Programação Funcional Reativa): Agora, vamos adicionar um toque de "tempo real" à equação. Imagine que você está assistindo a um jogo de futebol na TV. Enquanto assiste, você reage aos eventos que acontecem, como um gol marcado ou uma falta cometida. Na programação funcional reativa, você escreve seu código de forma a reagir automaticamente a mudanças de estado ou eventos. É como ter um sistema que observa continuamente o que está acontecendo e executa ações com base nisso, sem que você precise dizer explicitamente o que fazer a cada momento. </p>
+
+<p>
+Nest fornece uma arquitetura de aplicação pronta que permite aos desenvolvedores e equipes criarem aplicações altamente testáveis, escaláveis, fracamente acopladas e alta manutenibilidade
+</p>
+
+
+</div>
+
+<h2 id="instalation"> Instruções de Instalação</h2>
 
 Para instalar e configurar a API Baas em seu ambiente local, siga estas etapas:
 
@@ -22,6 +92,11 @@ git clone https://seurepositorio.com/api-baas.git
 4. Instale as dependências do projeto:
 
 5. Após a instalação das dependências, você estará pronto para iniciar a API Baas localmente.
+
+<h2 id="scripts">Scripts</h2>
+
+A API Baas inclui os seguintes scripts npm para facilitar o desenvolvimento e o teste:
+
 - Iniciar o Projeto em Modo de Produção:
 ```sh
 npm start
@@ -85,37 +160,9 @@ npm run lint
 
 Este comando executa a verificação de linting no código TypeScript usando o ESLint. Ele tentará corrigir automaticamente os problemas de lint encontrados.
 
-## Scripts
-
-A API Baas inclui os seguintes scripts npm para facilitar o desenvolvimento e o teste:
-
-
-## Descrição
+<h2 id="app_description">Descrição da aplicação</h2>
 
 A API Baas oferece endpoints para manipulação de contas, endereços e transações financeiras. Abaixo está a descrição dos principais recursos oferecidos pela API:
-
-### Contas (Accounts)
-
-Os endpoints relacionados a contas permitem aos usuários:
-
-- Listar todas as contas
-- Criar uma nova conta
-- Obter os detalhes de uma conta específica
-- Atualizar uma conta existente
-- Remover uma conta existente
-
-### Endereços (Address)
-
-Os endpoints relacionados a endereços permitem aos usuários:
-
-- Criar um novo endereço
-- Obter os detalhes de um endereço específico
-
-### Transações Financeiras (Financial Transactions)
-
-Os endpoints relacionados a transações financeiras permitem aos usuários:
-
-- Obter uma lista de transações financeiras de uma conta específica
 
 ## Recursos
 

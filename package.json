@@ -7,9 +7,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "build": "nest build",
-    "docs:generate": "sleep 5 && curl -o swagger.json http://localhost:3000/api-json",
-    "docs:stop": "killall node",
-    "docs": "concurrently \"npm run start\" \"npm run docs:generate\" && npm run docs:stop",
+    "docs": "scripts/main.sh",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",

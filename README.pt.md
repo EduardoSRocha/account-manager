@@ -1,32 +1,3 @@
-<style>
-    .title {
-        text-decoration:none; 
-        border: none;
-        padding: 0;
-        margin: 0;
-        margin-top: 5px;
-    }
-    
-    .subtitle {
-        text-decoration:none; 
-        border: none;
-        padding: 0;
-        margin: 0;
-        margin-top: 5px;
-    }
-    
-    .nota-rodape {
-        text-align: "justify";
-        text-transform: "bold";
-        font-size: 11px;
-        font-weight: "italic";
-    }
-    
-    h2 {
-        border: none;
-    }
-</style>
-
 <h1 class="title">Documentação da API Baas</h1>
 <h2 class="subtitle"><i>API Portifólio - NestJs + Postgresql</i></h2>
 

@@ -23,7 +23,6 @@ start_app() {
 generate_swagger() {
     echo "Abrindo um novo terminal para gerar o Swagger JSON..."
     gnome-terminal -- bash -c 'sleep 10; curl -o swagger.json http://localhost:3000/api-json; sleep 5; kill -9 $PID; exit'
-    end_app
 }
 
 # Função para encerrar a aplicação
@@ -32,8 +31,18 @@ end_app() {
     kill $PID  # Encerra o processo da aplicação
 }
 
+check_and_end_app() {
+    if [ -f "swagger_generated" ]; then
+        end_app
+    else
+        sleep 1
+        check_and_end_app
+    fi
+}
+
 # Iniciar o Docker, a aplicação, abrir um novo terminal para gerar o Swagger JSON e encerrar o Docker
 start_docker
 start_app
 generate_swagger
+check_and_end_app
 end_docker
